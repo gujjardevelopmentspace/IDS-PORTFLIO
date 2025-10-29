@@ -33,13 +33,33 @@ const About = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-12 md:pb-16 px-4 sm:px-6">
-        <div className="container mx-auto text-center animate-fade-in">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">We Design Experiences That Shape Tomorrow</h1>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+      <section className="pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-12 md:pb-16 px-4 sm:px-6 relative overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-secondary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        </div>
+        
+        <div className="container mx-auto text-center animate-fade-in relative z-10">
+          <div className="inline-block mb-3 px-3 py-1 bg-primary/10 rounded-full text-primary text-xs font-medium">
+            About Our Studio
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground to-foreground/70">
+            We Design Experiences That Shape Tomorrow
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Inventer Design Studio is a collective of creative minds dedicated to crafting spaces,
             brands, and digital experiences that inspire and endure.
           </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a href="#our-story" className="px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors">
+              Our Story
+            </a>
+            <a href="#team" className="px-6 py-3 rounded-lg bg-card border border-border hover:bg-card/80 transition-colors">
+              Meet The Team
+            </a>
+          </div>
         </div>
       </section>
 
@@ -57,12 +77,22 @@ const About = () => {
       </section>
 
       {/* Our Story */}
-      <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-muted">
-        <div className="container mx-auto max-w-4xl">
+      <section id="our-story" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-muted/50 relative overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '0.5s' }} />
+          <div className="absolute bottom-1/3 left-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
+        </div>
+        
+        <div className="container mx-auto max-w-4xl relative z-10">
           <div className="space-y-6 sm:space-y-8 text-center animate-fade-in">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">Our Story</h2>
-            <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
-              <p>
+            <div className="inline-block mb-3 px-3 py-1 bg-primary/10 rounded-full text-primary text-xs font-medium">
+              Since 2018
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground to-foreground/70">Our Story</h2>
+            <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              <p className="relative">
+                <span className="absolute -left-4 top-0 text-4xl text-primary/20 font-serif">"</span>
                 Founded in 2018, Inventer Design Studio emerged from a shared vision: to create
                 design solutions that transcend trends and stand the test of time. What began as a
                 small collective of architects and designers has evolved into a full-service design
@@ -73,11 +103,18 @@ const About = () => {
                 design, branding, and digital experiences. We believe that great design happens at
                 the intersection of form and function, where creativity meets purpose.
               </p>
-              <p>
+              <p className="relative">
                 Today, we work with clients around the globe, transforming spaces and brands
                 through innovative thinking, meticulous craftsmanship, and a relentless pursuit of
                 excellence.
+                <span className="absolute -right-4 bottom-0 text-4xl text-primary/20 font-serif">"</span>
               </p>
+            </div>
+            <div className="pt-6">
+              <a href="#values" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+                <span>Discover our values</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-bounce-horizontal"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </a>
             </div>
           </div>
         </div>
@@ -163,13 +200,22 @@ const About = () => {
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="py-32 px-6">
-        <div className="container mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="section-title">Our Core Values</h2>
+      {/* Values */}
+      <section id="values" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 relative overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/3 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute bottom-1/4 right-1/3 w-72 h-72 bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        </div>
+        
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+            <div className="inline-block mb-3 px-3 py-1 bg-primary/10 rounded-full text-primary text-xs font-medium">
+              What Drives Us
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground to-foreground/70">Our Values</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              The principles that guide every decision and design we create
+              These core principles guide our approach to every project and interaction.
             </p>
           </div>
 
@@ -177,13 +223,13 @@ const About = () => {
             {values.map((value, index) => (
               <div
                 key={value.title}
-                className="text-center space-y-4 p-6 animate-slide-up"
+                className="p-6 sm:p-8 border border-border/50 rounded-xl shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300 bg-background/50 backdrop-blur-sm animate-fade-in text-center space-y-4"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10">
-                  <value.icon className="w-8 h-8 text-accent" />
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 transform transition-transform duration-300 hover:scale-110">
+                  <value.icon className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">{value.title}</h3>
+                <h3 className="text-xl font-bold text-foreground">{value.title}</h3>
                 <p className="text-muted-foreground">{value.description}</p>
               </div>
             ))}

@@ -70,38 +70,58 @@ const Services = () => {
       <Navigation />
 
       {/* Header */}
-      <section className="pt-24 sm:pt-28 md:pt-32 pb-10 sm:pb-16 px-4 sm:px-6">
-        <div className="container mx-auto text-center animate-fade-in">
-          <h1 className="section-title text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6">Our Services</h1>
+      <section className="pt-24 sm:pt-28 md:pt-32 pb-10 sm:pb-16 px-4 sm:px-6 relative overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '0.5s' }} />
+          <div className="absolute bottom-1/3 left-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
+        </div>
+        
+        <div className="container mx-auto text-center animate-fade-in relative z-10">
+          <div className="inline-block mb-3 px-3 py-1 bg-primary/10 rounded-full text-primary text-xs font-medium">
+            What We Offer
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground to-foreground/70">Our Services</h1>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Comprehensive design solutions tailored to transform your vision into reality
           </p>
+          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+            <Button asChild size="lg" className="rounded-full">
+              <Link to="/contact">Get Started</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="rounded-full">
+              <a href="#services-grid">Explore Services</a>
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6">
+      <section id="services-grid" className="py-12 sm:py-16 px-4 sm:px-6 relative">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             {services.map((service, index) => (
               <div
                 key={service.title}
-                className="space-y-4 sm:space-y-6 p-6 sm:p-8 rounded-lg bg-card border border-border hover:shadow-lg transition-shadow animate-slide-up h-auto"
+                className="space-y-4 sm:space-y-6 p-6 sm:p-8 rounded-xl bg-card border border-border/50 hover:border-primary/20 hover:shadow-lg transition-all duration-300 animate-slide-up h-auto backdrop-blur-sm"
                 style={{ animationDelay: `${index * 0.1}s`, minHeight: "auto" }}
               >
-                <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-accent/10">
-                  <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-accent" />
+                <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/10 transform transition-transform duration-300 hover:scale-110">
+                  <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold">{service.title}</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">{service.title}</h2>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{service.description}</p>
                 <ul className="space-y-2">
                   {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center text-xs sm:text-sm">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent mr-3" />
-                      {feature}
+                    <li key={feature} className="flex items-center text-xs sm:text-sm group">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mr-3 group-hover:scale-125 transition-transform duration-300" />
+                      <span className="group-hover:text-foreground transition-colors duration-300">{feature}</span>
                     </li>
                   ))}
                 </ul>
+                <Button variant="outline" className="w-full sm:w-auto rounded-full hover:bg-primary/10 hover:text-primary transition-all duration-300">
+                  {service.cta}
+                </Button>
               </div>
             ))}
           </div>

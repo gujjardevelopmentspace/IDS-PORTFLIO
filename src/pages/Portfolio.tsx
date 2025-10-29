@@ -51,12 +51,20 @@ const Portfolio = () => {
       <Navigation />
 
       {/* Header */}
-      <section className="pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-12 md:pb-16 px-4 sm:px-6">
-        <div className="container mx-auto text-center animate-fade-in">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Our Portfolio</h1>
+      <section className="pt-24 sm:pt-28 md:pt-32 pb-10 sm:pb-16 px-4 sm:px-6 relative overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '0.5s' }} />
+          <div className="absolute bottom-1/3 left-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
+        </div>
+        
+        <div className="container mx-auto text-center animate-fade-in relative z-10">
+          <div className="inline-block mb-3 px-3 py-1 bg-primary/10 rounded-full text-primary text-xs font-medium">
+            Our Work
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground to-foreground/70">Our Portfolio</h1>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            A curated collection of our most impactful projects, showcasing innovation across
-            architecture, interior design, branding, and digital experiences.
+            Showcasing our finest work across architecture, interiors, branding, and digital design
           </p>
         </div>
       </section>
@@ -64,44 +72,41 @@ const Portfolio = () => {
       {/* Projects Grid */}
       <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6">
         <div className="container mx-auto">
-          <div className="space-y-16 sm:space-y-24 md:space-y-32">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             {projects.map((project, index) => (
               <div
                 key={project.id}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center animate-slide-up ${
-                  index % 2 === 1 ? "lg:grid-flow-dense" : ""
-                }`}
+                className="group relative overflow-hidden rounded-xl border border-border/50 hover:border-primary/20 shadow-sm hover:shadow-lg transition-all duration-300 animate-slide-up bg-card/50 backdrop-blur-sm"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className={`space-y-4 sm:space-y-6 ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
-                  <p className="text-xs sm:text-sm font-semibold text-accent uppercase tracking-wider">
-                    {project.category}
-                  </p>
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">{project.title}</h2>
-                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="flex gap-4 sm:gap-8 text-xs sm:text-sm">
-                    <div>
-                      <p className="font-semibold mb-1">Client</p>
-                      <p className="text-muted-foreground">{project.client}</p>
-                    </div>
-                    <div>
-                      <p className="font-semibold mb-1">Year</p>
-                      <p className="text-muted-foreground">{project.year}</p>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className={`overflow-hidden rounded-lg hover-scale ${
-                    index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""
-                  }`}
-                >
+                <div className="aspect-[4/3] w-full overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-[400px] object-cover"
+                    className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div className="p-6 sm:p-8 relative">
+                  <div className="inline-block mb-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-xs font-medium">{project.category}</div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">{project.title}</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground mb-4">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-4 text-xs sm:text-sm text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <span className="font-medium text-foreground">Client:</span> {project.client}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span className="font-medium text-foreground">Year:</span> {project.year}
+                    </div>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-border/30">
+                    <a href="#" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-sm">
+                      <span>View Project</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-bounce-horizontal"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}

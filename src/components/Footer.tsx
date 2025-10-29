@@ -21,32 +21,49 @@ const Footer = () => {
             </p>
             <div className="flex space-x-3 sm:space-x-4 pt-1 sm:pt-2">
               <a
-                href="#"
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-card border border-border hover:border-primary flex items-center justify-center transition-all hover:scale-110"
+                href="https://github.com/inventor-design"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-card/80 border border-border hover:border-primary hover:bg-primary/10 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
                 aria-label="GitHub"
               >
-                <Github size={16} className="sm:size-18" />
+                <Github size={16} className="sm:w-5 sm:h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
               </a>
               <a
-                href="#"
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-card border border-border hover:border-primary flex items-center justify-center transition-all hover:scale-110"
+                href="https://linkedin.com/company/inventor-design"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-card/80 border border-border hover:border-primary hover:bg-primary/10 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
                 aria-label="LinkedIn"
               >
-                <Linkedin size={16} className="sm:size-18" />
+                <Linkedin size={16} className="sm:w-5 sm:h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
               </a>
               <a
-                href="#"
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-card border border-border hover:border-primary flex items-center justify-center transition-all hover:scale-110"
+                href="https://instagram.com/inventor.design"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-card/80 border border-border hover:border-primary hover:bg-primary/10 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
                 aria-label="Instagram"
               >
-                <Instagram size={16} className="sm:size-18" />
+                <Instagram size={16} className="sm:w-5 sm:h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
               </a>
               <a
-                href="#"
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-card border border-border hover:border-primary flex items-center justify-center transition-all hover:scale-110"
+                href="https://youtube.com/c/inventordesign"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-card/80 border border-border hover:border-primary hover:bg-primary/10 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
                 aria-label="YouTube"
               >
-                <Youtube size={16} className="sm:size-18" />
+                <Youtube size={16} className="sm:w-5 sm:h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
+              </a>
+              <a
+                href="https://twitter.com/inventor_design"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-card/80 border border-border hover:border-primary hover:bg-primary/10 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                aria-label="Twitter"
+              >
+                <Twitter size={16} className="sm:w-5 sm:h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
               </a>
             </div>
           </div>
@@ -94,25 +111,25 @@ const Footer = () => {
             <h4 className="font-semibold text-sm sm:text-base mb-2 sm:mb-4">Get In Touch</h4>
             <a 
               href="mailto:contact@inventordesign.com"
-              className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 mb-3 sm:mb-4"
+              className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 mb-3 sm:mb-4 group"
             >
-              <Mail size={14} className="sm:size-16" />
+              <Mail size={14} className="sm:w-4 sm:h-4 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
               contact@inventordesign.com
             </a>
             <a 
               href="tel:+1234567890"
-              className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 mb-3 sm:mb-4"
+              className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 mb-3 sm:mb-4 group"
             >
-              <Phone size={14} className="sm:size-16" />
+              <Phone size={14} className="sm:w-4 sm:h-4 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
               +1 (234) 567-890
             </a>
             <a 
               href="https://maps.google.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
+              className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 group"
             >
-              <MapPin size={14} className="sm:size-16" />
+              <MapPin size={14} className="sm:w-4 sm:h-4 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
               New York, NY
             </a>
           </div>
