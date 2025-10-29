@@ -145,7 +145,7 @@ const Footer = () => {
               <div className="w-6 flex justify-center mr-2">
                 <Mail size={14} className="sm:size-16 group-hover:text-primary transition-colors" />
               </div>
-              <span>info@inventervisionstudio.com</span>
+              <span>info@inventerdesignstudio.com</span>
               <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
             </a>
             <a 
