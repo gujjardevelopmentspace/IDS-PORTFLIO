@@ -70,33 +70,33 @@ const Services = () => {
       <Navigation />
 
       {/* Header */}
-      <section className="pt-32 pb-16 px-6">
+      <section className="pt-24 sm:pt-28 md:pt-32 pb-10 sm:pb-16 px-4 sm:px-6">
         <div className="container mx-auto text-center animate-fade-in">
-          <h1 className="section-title mb-6">Our Services</h1>
-          <p className="body-large text-muted-foreground max-w-3xl mx-auto">
+          <h1 className="section-title text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6">Our Services</h1>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Comprehensive design solutions tailored to transform your vision into reality
           </p>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-16 px-6">
+      <section className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             {services.map((service, index) => (
               <div
                 key={service.title}
-                className="space-y-6 p-8 rounded-lg bg-card border border-border hover:shadow-lg transition-shadow animate-slide-up h-auto"
-                style={{ animationDelay: `${index * 0.1}s`, minHeight: "450px" }}
+                className="space-y-4 sm:space-y-6 p-6 sm:p-8 rounded-lg bg-card border border-border hover:shadow-lg transition-shadow animate-slide-up h-auto"
+                style={{ animationDelay: `${index * 0.1}s`, minHeight: "auto" }}
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10">
-                  <service.icon className="w-8 h-8 text-accent" />
+                <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-accent/10">
+                  <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-accent" />
                 </div>
-                <h2 className="text-3xl font-bold">{service.title}</h2>
-                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                <h2 className="text-2xl sm:text-3xl font-bold">{service.title}</h2>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{service.description}</p>
                 <ul className="space-y-2">
                   {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center text-sm">
+                    <li key={feature} className="flex items-center text-xs sm:text-sm">
                       <span className="w-1.5 h-1.5 rounded-full bg-accent mr-3" />
                       {feature}
                     </li>
@@ -109,16 +109,16 @@ const Services = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-32 px-6 bg-muted">
+      <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-muted">
         <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-16 animate-fade-in">
+          <div className="text-center mb-10 sm:mb-16 animate-fade-in">
             <h2 className="section-title">Our Process</h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-base sm:text-lg">
               A collaborative approach to bringing your vision to life
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
                 step: "01",
@@ -141,12 +141,12 @@ const Services = () => {
             ].map((phase, index) => (
               <div
                 key={phase.step}
-                className="text-center space-y-4 animate-slide-up"
+                className="text-center space-y-3 sm:space-y-4 animate-slide-up p-4 sm:p-6"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="text-6xl font-bold text-accent/20">{phase.step}</div>
-                <h3 className="text-xl font-bold">{phase.title}</h3>
-                <p className="text-muted-foreground">{phase.description}</p>
+                <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-accent/20">{phase.step}</div>
+                <h3 className="text-lg sm:text-xl font-bold">{phase.title}</h3>
+                <p className="text-sm sm:text-base text-muted-foreground">{phase.description}</p>
               </div>
             ))}
           </div>
@@ -154,13 +154,13 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 px-6">
+      <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Ready to Get Started?</h2>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto">
             Let's discuss how we can help bring your project to life
           </p>
-          <Button size="lg" asChild>
+          <Button size="lg" className="w-full sm:w-auto" asChild>
             <Link to="/contact">Schedule a Consultation</Link>
           </Button>
         </div>

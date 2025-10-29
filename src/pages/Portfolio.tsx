@@ -51,10 +51,10 @@ const Portfolio = () => {
       <Navigation />
 
       {/* Header */}
-      <section className="pt-32 pb-16 px-6">
+      <section className="pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-12 md:pb-16 px-4 sm:px-6">
         <div className="container mx-auto text-center animate-fade-in">
-          <h1 className="section-title mb-6">Our Portfolio</h1>
-          <p className="body-large text-muted-foreground max-w-3xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Our Portfolio</h1>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             A curated collection of our most impactful projects, showcasing innovation across
             architecture, interior design, branding, and digital experiences.
           </p>
@@ -62,26 +62,26 @@ const Portfolio = () => {
       </section>
 
       {/* Projects Grid */}
-      <section className="py-16 px-6">
+      <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6">
         <div className="container mx-auto">
-          <div className="space-y-32">
+          <div className="space-y-16 sm:space-y-24 md:space-y-32">
             {projects.map((project, index) => (
               <div
                 key={project.id}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center animate-slide-up ${
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center animate-slide-up ${
                   index % 2 === 1 ? "lg:grid-flow-dense" : ""
                 }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className={`space-y-6 ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
-                  <p className="text-sm font-semibold text-accent uppercase tracking-wider">
+                <div className={`space-y-4 sm:space-y-6 ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
+                  <p className="text-xs sm:text-sm font-semibold text-accent uppercase tracking-wider">
                     {project.category}
                   </p>
-                  <h2 className="text-4xl md:text-5xl font-bold">{project.title}</h2>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">{project.title}</h2>
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                     {project.description}
                   </p>
-                  <div className="flex gap-8 text-sm">
+                  <div className="flex gap-4 sm:gap-8 text-xs sm:text-sm">
                     <div>
                       <p className="font-semibold mb-1">Client</p>
                       <p className="text-muted-foreground">{project.client}</p>

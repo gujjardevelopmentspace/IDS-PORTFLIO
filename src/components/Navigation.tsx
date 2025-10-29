@@ -36,19 +36,19 @@ const Navigation = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="group flex items-center hover:opacity-80 transition-opacity">
             <img 
               src={idsLogo} 
               alt="INVENTOR Design Studio" 
-              className="h-10 sm:h-12 group-hover:scale-105 transition-transform duration-300"
+              className="h-8 sm:h-10 md:h-12 group-hover:scale-105 transition-transform duration-300"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -60,36 +60,37 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
-            <Button variant="default" size="sm" className="ml-4" asChild>
+            <Button variant="default" size="sm" className="ml-2 lg:ml-4" asChild>
               <Link to="/contact">Let's Talk</Link>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground"
+            className="md:hidden text-foreground p-1"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-4 animate-fade-in">
+          <div className="md:hidden mt-3 pb-3 space-y-3 animate-fade-in bg-background/95 backdrop-blur-sm rounded-md p-3 shadow-sm">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`block text-sm font-medium transition-colors hover:text-accent ${
+                className={`block py-2 text-sm font-medium transition-colors hover:text-accent ${
                   isActive(link.path) ? "text-accent" : "text-foreground"
                 }`}
               >
                 {link.name}
               </Link>
             ))}
-            <Button variant="default" size="sm" className="w-full" asChild>
+            <Button variant="default" size="sm" className="w-full mt-2" asChild>
               <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                 Let's Talk
               </Link>

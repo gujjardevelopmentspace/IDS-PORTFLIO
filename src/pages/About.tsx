@@ -33,10 +33,10 @@ const About = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6">
+      <section className="pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-12 md:pb-16 px-4 sm:px-6">
         <div className="container mx-auto text-center animate-fade-in">
-          <h1 className="section-title mb-6">We Design Experiences That Shape Tomorrow</h1>
-          <p className="body-large text-muted-foreground max-w-3xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">We Design Experiences That Shape Tomorrow</h1>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Inventer Design Studio is a collective of creative minds dedicated to crafting spaces,
             brands, and digital experiences that inspire and endure.
           </p>
@@ -44,24 +44,24 @@ const About = () => {
       </section>
 
       {/* Studio Image */}
-      <section className="px-6 pb-16">
+      <section className="px-4 sm:px-6 pb-8 sm:pb-12 md:pb-16">
         <div className="container mx-auto">
           <div className="overflow-hidden rounded-lg animate-slide-up">
             <img
               src={studioImage}
               alt="Inventer Design Studio"
-              className="w-full h-[600px] object-cover"
+              className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] object-cover"
             />
           </div>
         </div>
       </section>
 
       {/* Our Story */}
-      <section className="py-32 px-6 bg-muted">
+      <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-muted">
         <div className="container mx-auto max-w-4xl">
-          <div className="space-y-8 text-center animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold">Our Story</h2>
-            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+          <div className="space-y-6 sm:space-y-8 text-center animate-fade-in">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">Our Story</h2>
+            <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
               <p>
                 Founded in 2018, Inventer Design Studio emerged from a shared vision: to create
                 design solutions that transcend trends and stand the test of time. What began as a
@@ -84,17 +84,17 @@ const About = () => {
       </section>
 
       {/* Company Information */}
-      <section className="py-24 px-6 bg-gradient-to-br from-background to-accent/5">
+      <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 bg-gradient-to-br from-background to-accent/5">
         <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Industry Leaders</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12 animate-fade-in">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Industry Leaders</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
               Delivering cutting-edge solutions since 2024 with unmatched expertise and innovation
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center text-center p-8 bg-card rounded-xl border border-accent/20 shadow-lg hover:shadow-accent/10 hover:border-accent/30 transition-all duration-300 animate-slide-up group min-h-[600px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <div className="flex flex-col items-center text-center p-6 sm:p-8 bg-card rounded-xl border border-accent/20 shadow-lg hover:shadow-accent/10 hover:border-accent/30 transition-all duration-300 animate-slide-up group min-h-[auto] sm:min-h-[500px] md:min-h-[600px]">
               <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300">
                 <MapPin className="w-8 h-8 text-accent" />
               </div>
