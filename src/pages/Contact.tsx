@@ -1,11 +1,12 @@
 import { useState, useCallback, useMemo } from "react";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Send, ArrowRight, Clock, MessageSquare } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -15,14 +16,24 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
 
   const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you as soon as possible.",
-    });
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setFormStatus("submitting");
+    
+    // Simulate form submission
+    setTimeout(() => {
+      toast({
+        title: "Message Sent!",
+        description: "We'll get back to you as soon as possible.",
+      });
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setFormStatus("success");
+      
+      // Reset form status after showing success
+      setTimeout(() => setFormStatus("idle"), 3000);
+    }, 1000);
   }, [toast]);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -33,23 +44,21 @@ const Contact = () => {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navigation />
 
-      {/* Header */}
-      <section className="pt-24 sm:pt-28 md:pt-32 pb-10 sm:pb-16 px-4 sm:px-6 relative overflow-hidden">
-        {/* Background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '0.5s' }} />
-          <div className="absolute bottom-1/3 left-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
+      {/* Hero Section */}
+      <section className="relative pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-background">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px]" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
         </div>
         
-        <div className="container mx-auto text-center animate-fade-in relative z-10">
-          <div className="inline-block mb-3 px-3 py-1 bg-primary/10 rounded-full text-primary text-xs font-medium">
-            Get In Touch
-          </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground to-foreground/70">Let's Build Something Extraordinary</h1>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+        <div className="container relative mx-auto text-center animate-fade-in">
+          <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-primary bg-primary/10 rounded-full">GET IN TOUCH</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-white/80 bg-clip-text">Let's Build Something Extraordinary</h1>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Have a project in mind? We'd love to hear from you. Get in touch and let's create
             something amazing together.
           </p>
@@ -57,70 +66,106 @@ const Contact = () => {
       </section>
 
       {/* Contact Content */}
-      <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 relative">
+      <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
-            {/* Contact Information */}
-            <div className="space-y-6 sm:space-y-8 animate-fade-in">
-              <div className="p-6 sm:p-8 rounded-xl border border-border/50 hover:border-primary/20 shadow-sm hover:shadow-md transition-all duration-300 bg-card/50 backdrop-blur-sm">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">Contact Information</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
+            {/* Contact Info */}
+            <div className="space-y-8 sm:space-y-10 animate-fade-in">
+              <div>
+                <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-primary bg-primary/10 rounded-full">CONTACT US</span>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Get in Touch</h2>
                 <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8">
                   Whether you have a question about our services, need a quote, or want to discuss a
                   potential project, our team is ready to answer all your questions.
                 </p>
+              </div>
 
-                {useMemo(() => (
-                  <div className="space-y-4 sm:space-y-6">
-                    <div className="flex items-start space-x-3 sm:space-x-4 group">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors duration-300">
-                        <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold mb-1">Email</h3>
-                        <a href="mailto:hello@inventerdesign.com" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 block">hello@inventerdesign.com</a>
-                        <a href="mailto:info@inventerdesign.com" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 block">info@inventerdesign.com</a>
-                      </div>
+              {useMemo(() => (
+                <div className="space-y-6 sm:space-y-8">
+                  <div className="group flex items-start space-x-4 sm:space-x-5 p-4 sm:p-5 rounded-xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:border-primary/20 transition-all duration-300">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                      <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                     </div>
-
-                    <div className="flex items-start space-x-3 sm:space-x-4 group">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors duration-300">
-                        <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold mb-1">Phone</h3>
-                        <a href="tel:+15551234567" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 block">+1 (555) 123-4567</a>
-                        <a href="tel:+15559876543" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 block">+1 (555) 987-6543</a>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start space-x-3 sm:space-x-4 group">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors duration-300">
-                        <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold mb-1">Office</h3>
-                        <p className="text-sm text-muted-foreground">
-                          123 Design Street, Creative District
-                          <br />
-                          New York, NY 10001
-                          <br />
-                          United States
-                        </p>
-                      </div>
+                    <div>
+                      <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">Email</h3>
+                      <p className="text-sm sm:text-base text-muted-foreground">contact@inventerdesign.com</p>
+                      <a href="mailto:contact@inventerdesign.com" className="inline-flex items-center mt-2 text-xs sm:text-sm font-medium text-primary hover:underline">
+                        Send an email <ArrowRight className="ml-1 w-3 h-3" />
+                      </a>
                     </div>
                   </div>
-                ), [])}
+
+                  <div className="group flex items-start space-x-4 sm:space-x-5 p-4 sm:p-5 rounded-xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:border-primary/20 transition-all duration-300">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                      <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">Phone</h3>
+                      <p className="text-sm sm:text-base text-muted-foreground">+1 (555) 123-4567</p>
+                      <a href="tel:+15551234567" className="inline-flex items-center mt-2 text-xs sm:text-sm font-medium text-primary hover:underline">
+                        Call us <ArrowRight className="ml-1 w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="group flex items-start space-x-4 sm:space-x-5 p-4 sm:p-5 rounded-xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:border-primary/20 transition-all duration-300">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                      <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">Office</h3>
+                      <p className="text-sm sm:text-base text-muted-foreground">
+                        123 Design Street
+                        <br />
+                        Creative District
+                        <br />
+                        New York, NY 10001
+                      </p>
+                      <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center mt-2 text-xs sm:text-sm font-medium text-primary hover:underline">
+                        Get directions <ArrowRight className="ml-1 w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ), [])}
+              
+              {/* Business Hours */}
+              <div className="p-6 sm:p-8 rounded-xl bg-card/50 backdrop-blur-sm border border-primary/10 space-y-4">
+                <div className="flex items-center space-x-3">
+                  <Clock className="w-5 h-5 text-primary" />
+                  <h3 className="font-semibold text-base sm:text-lg">Business Hours</h3>
+                </div>
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Monday - Friday:</span>
+                    <span className="font-medium">9:00 AM - 6:00 PM</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Saturday:</span>
+                    <span className="font-medium">10:00 AM - 4:00 PM</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Sunday:</span>
+                    <span className="font-medium">Closed</span>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Contact Form */}
             <div className="animate-slide-up">
-              <div className="bg-card rounded-xl p-5 sm:p-6 md:p-8 shadow-lg border border-border/50 hover:border-primary/20 hover:shadow-md transition-all duration-300 backdrop-blur-sm">
-                <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">Send us a message</h2>
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div className="bg-card/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 md:p-10 shadow-lg border border-primary/10 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10" />
+                
+                <div className="flex items-center space-x-3 mb-6">
+                  <MessageSquare className="w-5 h-5 text-primary" />
+                  <h2 className="text-xl sm:text-2xl font-bold">Send us a message</h2>
+                </div>
+                
+                <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                     <div>
-                      <label htmlFor="name" className="block mb-1 sm:mb-2 text-sm sm:text-base font-medium">
+                      <label htmlFor="name" className="block mb-2 text-sm font-medium">
                         Name
                       </label>
                       <Input
@@ -129,12 +174,12 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Your name"
+                        className="bg-background/50 border-primary/20 focus:border-primary"
                         required
-                        className="rounded-lg border-border/50 focus:border-primary/50 transition-all duration-300"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block mb-1 sm:mb-2 text-sm sm:text-base font-medium">
+                      <label htmlFor="email" className="block mb-2 text-sm font-medium">
                         Email
                       </label>
                       <Input
@@ -144,14 +189,14 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="Your email"
+                        className="bg-background/50 border-primary/20 focus:border-primary"
                         required
-                        className="rounded-lg border-border/50 focus:border-primary/50 transition-all duration-300"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block mb-1 sm:mb-2 text-sm sm:text-base font-medium">
+                    <label htmlFor="subject" className="block mb-2 text-sm font-medium">
                       Subject
                     </label>
                     <Input
@@ -160,13 +205,13 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       placeholder="What's this about?"
+                      className="bg-background/50 border-primary/20 focus:border-primary"
                       required
-                      className="rounded-lg border-border/50 focus:border-primary/50 transition-all duration-300"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block mb-1 sm:mb-2 text-sm sm:text-base font-medium">
+                    <label htmlFor="message" className="block mb-2 text-sm font-medium">
                       Message
                     </label>
                     <Textarea
@@ -175,14 +220,24 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell us what you need"
-                      rows={4}
+                      rows={5}
+                      className="bg-background/50 border-primary/20 focus:border-primary resize-none"
                       required
-                      className="rounded-lg border-border/50 focus:border-primary/50 transition-all duration-300"
                     />
                   </div>
 
-                  <Button type="submit" className="w-full rounded-full bg-primary hover:bg-primary/90 transition-all duration-300">
-                    Send Message
+                  <Button 
+                    type="submit" 
+                    className="w-full rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:scale-105 transition-all duration-300"
+                    disabled={formStatus !== "idle"}
+                  >
+                    {formStatus === "idle" && (
+                      <>
+                        Send Message <Send className="ml-2 w-4 h-4" />
+                      </>
+                    )}
+                    {formStatus === "submitting" && "Sending..."}
+                    {formStatus === "success" && "Message Sent!"}
                   </Button>
                 </form>
               </div>
@@ -190,6 +245,26 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      {/* Map Section */}
+      <section className="py-16 sm:py-20 px-4 sm:px-6 relative">
+        <div className="container mx-auto max-w-6xl">
+          <div className="rounded-2xl overflow-hidden border border-primary/10 shadow-lg h-[400px] relative">
+            <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm">
+              <div className="text-center p-8">
+                <h3 className="text-xl font-bold mb-4">Interactive Map</h3>
+                <p className="text-muted-foreground mb-6">Our office location in the heart of the Creative District</p>
+                <Button variant="outline" className="rounded-full hover:bg-primary/10 transition-all duration-300">
+                  <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                    Open in Google Maps <ArrowRight className="ml-2 w-4 h-4" />
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

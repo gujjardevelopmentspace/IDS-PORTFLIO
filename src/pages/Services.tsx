@@ -1,11 +1,14 @@
-import { useMemo } from "react";
-import { Building, Palette, Smartphone, Package } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Building, Palette, Smartphone, Package, ArrowRight, Check, ChevronRight, ArrowUpRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Services = () => {
+  const [activeService, setActiveService] = useState<string | null>(null);
+  
   // Services data extracted to a constant outside the component for better performance
   const SERVICES_DATA = [
     {
@@ -20,6 +23,9 @@ const Services = () => {
         "Space Planning",
       ],
       cta: "Explore Architecture Services",
+      color: "from-blue-500 to-indigo-600",
+      bgColor: "bg-blue-500/10",
+      textColor: "text-blue-500",
     },
     {
       icon: Palette,
@@ -33,6 +39,9 @@ const Services = () => {
         "Brand Guidelines",
       ],
       cta: "Discover Branding Solutions",
+      color: "from-amber-500 to-orange-600",
+      bgColor: "bg-amber-500/10",
+      textColor: "text-amber-500",
     },
     {
       icon: Smartphone,
@@ -46,6 +55,9 @@ const Services = () => {
         "Prototyping & Testing",
       ],
       cta: "View Digital Design Services",
+      color: "from-primary to-primary-foreground",
+      bgColor: "bg-primary/10",
+      textColor: "text-primary",
     },
     {
       icon: Package,
@@ -59,6 +71,9 @@ const Services = () => {
         "Virtual Reality Tours",
       ],
       cta: "See Visualization Work",
+      color: "from-emerald-500 to-teal-600",
+      bgColor: "bg-emerald-500/10",
+      textColor: "text-emerald-500",
     },
   ];
   
@@ -66,62 +81,89 @@ const Services = () => {
   const services = useMemo(() => SERVICES_DATA, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navigation />
 
-      {/* Header */}
-      <section className="pt-24 sm:pt-28 md:pt-32 pb-10 sm:pb-16 px-4 sm:px-6 relative overflow-hidden">
-        {/* Background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '0.5s' }} />
-          <div className="absolute bottom-1/3 left-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
+      {/* Hero Section */}
+      <section className="relative pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-background">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px]" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
         </div>
         
-        <div className="container mx-auto text-center animate-fade-in relative z-10">
-          <div className="inline-block mb-3 px-3 py-1 bg-primary/10 rounded-full text-primary text-xs font-medium">
-            What We Offer
-          </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground to-foreground/70">Our Services</h1>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Comprehensive design solutions tailored to transform your vision into reality
+        <div className="container relative mx-auto text-center animate-fade-in">
+          <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-primary bg-primary/10 rounded-full">OUR EXPERTISE</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-white/80 bg-clip-text">Transforming Visions Into Reality</h1>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            Comprehensive design solutions tailored to elevate your brand, space, and digital presence
           </p>
-          <div className="mt-8 flex flex-wrap gap-4 justify-center">
-            <Button asChild size="lg" className="rounded-full">
-              <Link to="/contact">Get Started</Link>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button size="lg" className="rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:scale-105 transition-all duration-300">
+              <Link to="/contact" className="flex items-center">
+                Get Started <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="rounded-full">
-              <a href="#services-grid">Explore Services</a>
+            <Button size="lg" variant="outline" className="rounded-full hover:bg-primary/10 transition-all duration-300">
+              <Link to="/portfolio">View Our Work</Link>
             </Button>
           </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section id="services-grid" className="py-12 sm:py-16 px-4 sm:px-6 relative">
+      <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
+          <div className="text-center mb-12 sm:mb-16">
+            <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-primary bg-primary/10 rounded-full">SERVICES</span>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Our Specialized Services</h2>
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
+              Tailored solutions designed to meet your specific needs and exceed your expectations
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
             {services.map((service, index) => (
               <div
                 key={service.title}
-                className="space-y-4 sm:space-y-6 p-6 sm:p-8 rounded-xl bg-card border border-border/50 hover:border-primary/20 hover:shadow-lg transition-all duration-300 animate-slide-up h-auto backdrop-blur-sm"
-                style={{ animationDelay: `${index * 0.1}s`, minHeight: "auto" }}
+                className="group relative overflow-hidden rounded-2xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:border-primary/20 transition-all duration-300 animate-slide-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+                onMouseEnter={() => setActiveService(service.title)}
+                onMouseLeave={() => setActiveService(null)}
               >
-                <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/10 transform transition-transform duration-300 hover:scale-110">
-                  <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br opacity-10 rounded-full blur-3xl transition-all duration-500 group-hover:opacity-20 group-hover:scale-150" style={{ background: `linear-gradient(to bottom right, ${service.color.split(' ')[1]}, transparent)` }} />
+                
+                <div className="p-8 sm:p-10 space-y-6 relative z-10">
+                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl ${service.bgColor} group-hover:scale-110 transition-transform duration-300`}>
+                    <service.icon className={`w-7 h-7 ${service.textColor}`} />
+                  </div>
+                  
+                  <h2 className="text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors duration-300">{service.title}</h2>
+                  
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{service.description}</p>
+                  
+                  <div className="space-y-3 pt-2">
+                    <h4 className="text-sm font-semibold">Key Features:</h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {service.features.map((feature) => (
+                        <li key={feature} className="flex items-center text-xs sm:text-sm">
+                          <Check className={`w-4 h-4 mr-2 ${service.textColor}`} />
+                          <span className="text-muted-foreground">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div className="pt-4">
+                    <Link 
+                      to="/contact" 
+                      className={`inline-flex items-center text-sm font-medium ${service.textColor} hover:underline`}
+                    >
+                      {service.cta} <ArrowUpRight className="ml-1 w-4 h-4" />
+                    </Link>
+                  </div>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">{service.title}</h2>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{service.description}</p>
-                <ul className="space-y-2">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center text-xs sm:text-sm group">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mr-3 group-hover:scale-125 transition-transform duration-300" />
-                      <span className="group-hover:text-foreground transition-colors duration-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button variant="outline" className="w-full sm:w-auto rounded-full hover:bg-primary/10 hover:text-primary transition-all duration-300">
-                  {service.cta}
-                </Button>
               </div>
             ))}
           </div>
@@ -129,44 +171,68 @@ const Services = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-muted">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-10 sm:mb-16 animate-fade-in">
-            <h2 className="section-title">Our Process</h2>
-            <p className="text-muted-foreground text-base sm:text-lg">
+      <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-background" />
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,#ffffff05_1px,transparent_1px),linear-gradient(135deg,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]" />
+        
+        <div className="container relative mx-auto max-w-5xl">
+          <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+            <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-primary bg-primary/10 rounded-full">OUR APPROACH</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Our Process</h2>
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
               A collaborative approach to bringing your vision to life
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 relative">
+            {/* Connection line */}
+            <div className="absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent hidden md:block" />
+            
             {[
               {
                 step: "01",
                 title: "Discovery",
                 description:
                   "We start by understanding your goals, challenges, and vision through in-depth consultations.",
+                icon: "🔍",
               },
               {
                 step: "02",
                 title: "Design",
                 description:
                   "Our team develops creative concepts and refines them based on your feedback and requirements.",
+                icon: "✏️",
               },
               {
                 step: "03",
                 title: "Delivery",
                 description:
                   "We bring the design to life with meticulous execution and ongoing support to ensure success.",
+                icon: "🚀",
               },
             ].map((phase, index) => (
               <div
                 key={phase.step}
-                className="text-center space-y-3 sm:space-y-4 animate-slide-up p-4 sm:p-6"
+                className="group relative bg-card/50 backdrop-blur-sm rounded-2xl border border-primary/10 p-8 text-center space-y-5 animate-slide-up hover:border-primary/20 hover:shadow-lg transition-all duration-300"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-accent/20">{phase.step}</div>
-                <h3 className="text-lg sm:text-xl font-bold">{phase.title}</h3>
+                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-background border border-primary/20 flex items-center justify-center text-xl z-10">
+                  {phase.icon}
+                </div>
+                
+                <div className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-primary/40 to-primary bg-clip-text text-transparent group-hover:from-primary group-hover:to-primary-foreground transition-all duration-300">
+                  {phase.step}
+                </div>
+                
+                <h3 className="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">{phase.title}</h3>
+                
                 <p className="text-sm sm:text-base text-muted-foreground">{phase.description}</p>
+                
+                <div className="pt-2">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto group-hover:bg-primary/20 transition-colors">
+                    <ChevronRight className="w-5 h-5 text-primary" />
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -174,15 +240,22 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Ready to Get Started?</h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto">
-            Let's discuss how we can help bring your project to life
-          </p>
-          <Button size="lg" className="w-full sm:w-auto" asChild>
-            <Link to="/contact">Schedule a Consultation</Link>
-          </Button>
+      <section className="py-24 sm:py-32 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/5" />
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,#ffffff08_1px,transparent_1px),linear-gradient(135deg,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px]" />
+        
+        <div className="container relative mx-auto text-center">
+          <div className="max-w-3xl mx-auto bg-background/30 backdrop-blur-md p-8 sm:p-12 rounded-3xl border border-primary/20 shadow-xl">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-transparent">Ready to Get Started?</h2>
+            <p className="text-lg sm:text-xl mb-8 text-muted-foreground max-w-2xl mx-auto">
+              Let's discuss how we can help bring your project to life with our expert services
+            </p>
+            <Button size="lg" className="rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:scale-105 transition-all duration-300" asChild>
+              <Link to="/contact" className="flex items-center">
+                Schedule a Consultation <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
