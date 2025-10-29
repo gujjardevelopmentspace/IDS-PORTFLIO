@@ -1,6 +1,18 @@
 import { Link } from "react-router-dom";
-import { Instagram, Linkedin, Twitter, Github, Youtube, Mail, Phone, MapPin, ArrowUpRight, ExternalLink, Heart } from "lucide-react";
-import idsLogo from "@/assets/ids-logo.png";
+import {
+  Instagram,
+  Linkedin,
+  Twitter,
+  Github,
+  Youtube,
+  Mail,
+  Phone,
+  MapPin,
+  ArrowUpRight,
+  ExternalLink,
+  Heart,
+} from "lucide-react";
+import logo from "@/assets/logo.jpeg"; // ✅ Updated logo import
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -14,18 +26,18 @@ const Footer = () => {
       
       <div className="container relative z-10 mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-14">
-          {/* Brand */}
+          {/* ✅ Updated Brand with logo.jpeg */}
           <div className="space-y-4 sm:space-y-5 col-span-2 md:col-span-1">
             <motion.img 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              src={idsLogo} 
-              alt="INVENTOR Design Studio" 
-              className="h-12 sm:h-14 md:h-16 mb-2 sm:mb-3"
+              src={logo} 
+              alt="Inventer Vision Studio" 
+              className="h-12 sm:h-14 md:h-16 mb-2 sm:mb-3 rounded-lg"
             />
             <p className="text-xs sm:text-sm text-muted-foreground/90 leading-relaxed">
-              INVENTOR Design Studio - a creative technology studio bridging software development and visual storytelling.
+              INVENTER Vision Studio — a creative technology studio bridging software development and visual storytelling.
               We build digital products and create cinematic content.
             </p>
             <div className="flex space-x-3 sm:space-x-4 pt-2 sm:pt-3">
@@ -127,27 +139,27 @@ const Footer = () => {
               <span className="absolute -bottom-1 left-0 w-1/2 h-0.5 bg-gradient-to-r from-primary/80 to-transparent"></span>
             </h4>
             <a 
-              href="mailto:contact@inventordesign.com"
+              href="mailto:info@inventervisionstudio.com"
               className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors flex items-center mb-3 sm:mb-4 group"
             >
               <div className="w-6 flex justify-center mr-2">
                 <Mail size={14} className="sm:size-16 group-hover:text-primary transition-colors" />
               </div>
-              <span>contact@inventordesign.com</span>
+              <span>info@inventervisionstudio.com</span>
               <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
             </a>
             <a 
-              href="tel:+1234567890"
+              href="tel:+923704441788"
               className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors flex items-center mb-3 sm:mb-4 group"
             >
               <div className="w-6 flex justify-center mr-2">
                 <Phone size={14} className="sm:size-16 group-hover:text-primary transition-colors" />
               </div>
-              <span>+1 (234) 567-890</span>
+              <span>+92 370 4441 788</span>
               <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
             </a>
             <a 
-              href="https://maps.google.com"
+              href="https://share.google/22EChxAzOwTvM5Z1I"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors flex items-center group"
@@ -155,13 +167,13 @@ const Footer = () => {
               <div className="w-6 flex justify-center mr-2">
                 <MapPin size={14} className="sm:size-16 group-hover:text-primary transition-colors" />
               </div>
-              <span>New York, NY</span>
+              <span>Lahore, Pakistan</span>
               <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
             </a>
           </div>
         </div>
 
-        {/* Newsletter - New Section */}
+        {/* Newsletter */}
         <div className="mt-10 sm:mt-12 md:mt-16 p-6 sm:p-8 rounded-2xl bg-card/30 backdrop-blur-sm border border-border/50">
           <div className="grid md:grid-cols-2 gap-6 items-center">
             <div>
@@ -184,9 +196,9 @@ const Footer = () => {
         {/* Bottom */}
         <div className="border-t border-border mt-10 sm:mt-12 md:mt-16 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-xs sm:text-sm text-muted-foreground flex items-center gap-1">
-            © {new Date().getFullYear()} INVENTOR Design Studio. All rights reserved.
+            © {new Date().getFullYear()} INVENTER Vision Studio. All rights reserved.
             <span className="hidden sm:inline-flex items-center text-xs text-muted-foreground/70 ml-2">
-              Made with <Heart size={12} className="mx-1 text-red-500" /> in New York
+              Made with <Heart size={12} className="mx-1 text-red-500" /> in Lahore
             </span>
           </p>
           <div className="flex space-x-6 sm:space-x-8 mt-4 sm:mt-0">

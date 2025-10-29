@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import idsLogo from "@/assets/ids-logo.png";
+import logo from "@/assets/logo.jpeg"; // ✅ Updated logo import
 import { motion } from "framer-motion";
 
 const Navigation = () => {
@@ -39,15 +39,15 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* ✅ Updated Logo */}
           <Link to="/" className="group flex items-center hover:opacity-90 transition-opacity">
             <motion.img 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              src={idsLogo} 
-              alt="INVENTOR Design Studio" 
-              className="h-8 sm:h-10 md:h-12 group-hover:scale-105 transition-transform duration-300"
+              src={logo} 
+              alt="Inventer Vision Studio" 
+              className="h-10 sm:h-12 md:h-14 rounded-lg group-hover:scale-105 transition-transform duration-300"
             />
           </Link>
 
