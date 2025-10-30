@@ -5,6 +5,9 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import ErrorBoundary from "@/components/ui/error-boundary";
+import { BackToTop } from "@/components/ui/back-to-top";
+import { MaskedInput } from "@/components/ui/masked-input";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 
@@ -13,6 +16,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     subject: "",
     message: "",
   });
@@ -44,8 +48,10 @@ const Contact = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <ErrorBoundary>
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <BackToTop />
 
       {/* Hero Section */}
       <section className="relative pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 overflow-hidden">
@@ -82,14 +88,14 @@ const Contact = () => {
 
               {useMemo(() => (
                 <div className="space-y-6 sm:space-y-8">
-                  <div className="group flex items-start space-x-4 sm:space-x-5 p-4 sm:p-5 rounded-xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:border-primary/20 transition-all duration-300">
+                  <div className="group flex flex-col items-center text-center sm:flex-row sm:items-start sm:text-left space-y-3 sm:space-y-0 sm:space-x-5 p-4 sm:p-5 rounded-xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:border-primary/20 transition-all duration-300">
                     <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                       <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">Email</h3>
-                      <p className="text-sm sm:text-base text-muted-foreground">contact@inventerdesign.com</p>
-                      <a href="mailto:contact@inventerdesign.com" className="inline-flex items-center mt-2 text-xs sm:text-sm font-medium text-primary hover:underline">
+                      <p className="text-sm sm:text-base text-muted-foreground">info@inventerdesignstudio.com</p>
+                      <a href="mailto:info@inventerdesignstudio.com" className="inline-flex items-center mt-2 text-xs sm:text-sm font-medium text-primary hover:underline">
                         Send an email <ArrowRight className="ml-1 w-3 h-3" />
                       </a>
                     </div>
@@ -101,8 +107,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">Phone</h3>
-                      <p className="text-sm sm:text-base text-muted-foreground">+1 (555) 123-4567</p>
-                      <a href="tel:+15551234567" className="inline-flex items-center mt-2 text-xs sm:text-sm font-medium text-primary hover:underline">
+                      <p className="text-sm sm:text-base text-muted-foreground">+92 370 4441788</p>
+                      <a href="tel:+923704441788" className="inline-flex items-center mt-2 text-xs sm:text-sm font-medium text-primary hover:underline">
                         Call us <ArrowRight className="ml-1 w-3 h-3" />
                       </a>
                     </div>
@@ -115,13 +121,13 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">Office</h3>
                       <p className="text-sm sm:text-base text-muted-foreground">
-                        123 Design Street
+                        First Floor, Plaza No. 8, H, A4
                         <br />
-                        Creative District
+                        Commercial Area Block H Valencia
                         <br />
-                        New York, NY 10001
+                        Lahore, 54000
                       </p>
-                      <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center mt-2 text-xs sm:text-sm font-medium text-primary hover:underline">
+                      <a href="https://www.google.com/maps/search/?api=1&query=First+Floor+Plaza+No.+8+H+A4+Commercial+Area+Block+H+Valencia+Lahore+54000" target="_blank" rel="noopener noreferrer" className="inline-flex items-center mt-2 text-xs sm:text-sm font-medium text-primary hover:underline">
                         Get directions <ArrowRight className="ml-1 w-3 h-3" />
                       </a>
                     </div>
@@ -176,6 +182,7 @@ const Contact = () => {
                         placeholder="Your name"
                         className="bg-background/50 border-primary/20 focus:border-primary"
                         required
+                        autoFocus
                       />
                     </div>
                     <div>
@@ -193,6 +200,20 @@ const Contact = () => {
                         required
                       />
                     </div>
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block mb-2 text-sm font-medium">
+                      Phone
+                    </label>
+                    <MaskedInput
+                      id="phone"
+                      name="phone"
+                      mask="+99 999 9999999"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="Your phone number"
+                      className="bg-background/50 border-primary/20 focus:border-primary"
+                    />
                   </div>
 
                   <div>
@@ -267,6 +288,7 @@ const Contact = () => {
 
       <Footer />
     </div>
+    </ErrorBoundary>
   );
 };
 

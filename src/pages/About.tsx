@@ -1,11 +1,20 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Target, Lightbulb, Award, Users, MapPin, Calendar, Briefcase, ArrowRight, ChevronRight, Star } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import studioImage from "@/assets/about-studio.jpg";
 
 const About = () => {
   const [activeTab, setActiveTab] = useState("story");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 768);
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
   
   const values = useMemo(() => [
     {
@@ -29,6 +38,100 @@ const About = () => {
       description: "Building partnerships that inspire and create lasting impact",
     },
   ], []);
+
+  const storyContent = (
+    <div className="space-y-6">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-6">Our Story</h2>
+      <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
+        <p>
+          Founded in 2018, Inventer Design Studio emerged from a shared vision: to create
+          design solutions that transcend trends and stand the test of time. What began as a
+          small collective of architects and designers has evolved into a full-service design
+          studio.
+        </p>
+        <p>
+          Our multidisciplinary approach brings together expertise in architecture, interior
+          design, branding, and digital experiences. We believe that great design happens at
+          the intersection of form and function, where creativity meets purpose.
+        </p>
+        <p>
+          Today, we work with clients around the globe, transforming spaces and brands
+          through innovative thinking, meticulous craftsmanship, and a relentless pursuit of
+          excellence.
+        </p>
+      </div>
+      <div className="pt-6 flex items-center gap-2 text-primary">
+        <Star className="w-5 h-5 fill-primary" />
+        <Star className="w-5 h-5 fill-primary" />
+        <Star className="w-5 h-5 fill-primary" />
+        <Star className="w-5 h-5 fill-primary" />
+        <Star className="w-5 h-5 fill-primary" />
+        <span className="ml-2 text-sm font-medium">Trusted by over 500+ clients worldwide</span>
+      </div>
+    </div>
+  );
+
+  const missionContent = (
+    <div className="space-y-6">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-6">Our Mission</h2>
+      <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
+        <p>
+          At Inventer Design Studio, our mission is to create meaningful design solutions that elevate human experiences, inspire connection, and drive positive change in the world.
+        </p>
+        <p>
+          We strive to push the boundaries of what's possible, combining innovative thinking with technical excellence to deliver work that not only meets our clients' needs but exceeds their expectations.
+        </p>
+        <p>
+          Through thoughtful collaboration and a deep commitment to our craft, we aim to create designs that are not only visually compelling but also functionally superior and environmentally responsible.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+        <div className="flex items-center gap-3 p-4 rounded-lg border border-border/30 bg-card/50">
+          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+            <ChevronRight className="w-5 h-5 text-primary" />
+          </div>
+          <p className="text-sm">Sustainable design practices</p>
+        </div>
+        <div className="flex items-center gap-3 p-4 rounded-lg border border-border/30 bg-card/50">
+          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+            <ChevronRight className="w-5 h-5 text-primary" />
+          </div>
+          <p className="text-sm">Human-centered approach</p>
+        </div>
+      </div>
+    </div>
+  );
+
+  const approachContent = (
+    <div className="space-y-6">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-6">Our Approach</h2>
+      <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
+        <p>
+          Our design process is collaborative, iterative, and deeply rooted in understanding the unique needs of each client and project. We begin by listening and researching, gathering insights that inform our creative direction.
+        </p>
+        <p>
+          From concept to completion, we maintain open communication, ensuring that our clients are partners in the creative journey. We believe that the best solutions emerge from a thoughtful dialogue between designer and client.
+        </p>
+        <p>
+          Every project is approached with fresh eyes and an open mind, allowing us to discover unexpected opportunities and create designs that are both innovative and appropriate to their context.
+        </p>
+      </div>
+      <div className="flex flex-col sm:flex-row gap-4 pt-6">
+        <div className="flex-1 p-5 rounded-xl border border-border/30 bg-card/50">
+          <h4 className="font-semibold mb-2">Discovery</h4>
+          <p className="text-sm text-muted-foreground">Understanding goals, challenges, and vision</p>
+        </div>
+        <div className="flex-1 p-5 rounded-xl border border-border/30 bg-card/50">
+          <h4 className="font-semibold mb-2">Design</h4>
+          <p className="text-sm text-muted-foreground">Creating concepts based on insights</p>
+        </div>
+        <div className="flex-1 p-5 rounded-xl border border-border/30 bg-card/50">
+          <h4 className="font-semibold mb-2">Delivery</h4>
+          <p className="text-sm text-muted-foreground">Executing with precision and care</p>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-background">
@@ -75,7 +178,7 @@ const About = () => {
       {/* Tabbed Content Section */}
       <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
-          <div className="flex flex-wrap border-b border-border/30 mb-8">
+          <div className="hidden md:flex flex-wrap border-b border-border/30 mb-8">
             <button 
               onClick={() => setActiveTab("story")}
               className={`px-6 py-3 text-sm font-medium transition-all relative ${
@@ -116,101 +219,29 @@ const About = () => {
               )}
             </button>
           </div>
-          
-          <div className="animate-fade-in">
-            {activeTab === "story" && (
-              <div className="space-y-6">
-                <h2 className="text-3xl sm:text-4xl font-bold mb-6">Our Story</h2>
-                <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
-                  <p>
-                    Founded in 2018, Inventer Design Studio emerged from a shared vision: to create
-                    design solutions that transcend trends and stand the test of time. What began as a
-                    small collective of architects and designers has evolved into a full-service design
-                    studio.
-                  </p>
-                  <p>
-                    Our multidisciplinary approach brings together expertise in architecture, interior
-                    design, branding, and digital experiences. We believe that great design happens at
-                    the intersection of form and function, where creativity meets purpose.
-                  </p>
-                  <p>
-                    Today, we work with clients around the globe, transforming spaces and brands
-                    through innovative thinking, meticulous craftsmanship, and a relentless pursuit of
-                    excellence.
-                  </p>
-                </div>
-                <div className="pt-6 flex items-center gap-2 text-primary">
-                  <Star className="w-5 h-5 fill-primary" />
-                  <Star className="w-5 h-5 fill-primary" />
-                  <Star className="w-5 h-5 fill-primary" />
-                  <Star className="w-5 h-5 fill-primary" />
-                  <Star className="w-5 h-5 fill-primary" />
-                  <span className="ml-2 text-sm font-medium">Trusted by over 500+ clients worldwide</span>
-                </div>
-              </div>
-            )}
-            
-            {activeTab === "mission" && (
-              <div className="space-y-6">
-                <h2 className="text-3xl sm:text-4xl font-bold mb-6">Our Mission</h2>
-                <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
-                  <p>
-                    At Inventer Design Studio, our mission is to create meaningful design solutions that elevate human experiences, inspire connection, and drive positive change in the world.
-                  </p>
-                  <p>
-                    We strive to push the boundaries of what's possible, combining innovative thinking with technical excellence to deliver work that not only meets our clients' needs but exceeds their expectations.
-                  </p>
-                  <p>
-                    Through thoughtful collaboration and a deep commitment to our craft, we aim to create designs that are not only visually compelling but also functionally superior and environmentally responsible.
-                  </p>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
-                  <div className="flex items-center gap-3 p-4 rounded-lg border border-border/30 bg-card/50">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <ChevronRight className="w-5 h-5 text-primary" />
-                    </div>
-                    <p className="text-sm">Sustainable design practices</p>
-                  </div>
-                  <div className="flex items-center gap-3 p-4 rounded-lg border border-border/30 bg-card/50">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <ChevronRight className="w-5 h-5 text-primary" />
-                    </div>
-                    <p className="text-sm">Human-centered approach</p>
-                  </div>
-                </div>
-              </div>
-            )}
-            
-            {activeTab === "approach" && (
-              <div className="space-y-6">
-                <h2 className="text-3xl sm:text-4xl font-bold mb-6">Our Approach</h2>
-                <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
-                  <p>
-                    Our design process is collaborative, iterative, and deeply rooted in understanding the unique needs of each client and project. We begin by listening and researching, gathering insights that inform our creative direction.
-                  </p>
-                  <p>
-                    From concept to completion, we maintain open communication, ensuring that our clients are partners in the creative journey. We believe that the best solutions emerge from a thoughtful dialogue between designer and client.
-                  </p>
-                  <p>
-                    Every project is approached with fresh eyes and an open mind, allowing us to discover unexpected opportunities and create designs that are both innovative and appropriate to their context.
-                  </p>
-                </div>
-                <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                  <div className="flex-1 p-5 rounded-xl border border-border/30 bg-card/50">
-                    <h4 className="font-semibold mb-2">Discovery</h4>
-                    <p className="text-sm text-muted-foreground">Understanding goals, challenges, and vision</p>
-                  </div>
-                  <div className="flex-1 p-5 rounded-xl border border-border/30 bg-card/50">
-                    <h4 className="font-semibold mb-2">Design</h4>
-                    <p className="text-sm text-muted-foreground">Creating concepts based on insights</p>
-                  </div>
-                  <div className="flex-1 p-5 rounded-xl border border-border/30 bg-card/50">
-                    <h4 className="font-semibold mb-2">Delivery</h4>
-                    <p className="text-sm text-muted-foreground">Executing with precision and care</p>
-                  </div>
-                </div>
-              </div>
-            )}
+          {/* Mobile accordion (visible on small screens) */}
+          <div className="md:hidden mb-6">
+            <Accordion type="single" collapsible>
+              <AccordionItem value="story">
+                <AccordionTrigger>Our Story</AccordionTrigger>
+                <AccordionContent>{storyContent}</AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="mission">
+                <AccordionTrigger>Our Mission</AccordionTrigger>
+                <AccordionContent>{missionContent}</AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="approach">
+                <AccordionTrigger>Our Approach</AccordionTrigger>
+                <AccordionContent>{approachContent}</AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+
+          {/* Desktop / tablet tabs content (hidden on small screens) */}
+          <div className="animate-fade-in hidden md:block">
+            {activeTab === "story" && storyContent}
+            {activeTab === "mission" && missionContent}
+            {activeTab === "approach" && approachContent}
           </div>
         </div>
       </section>
@@ -256,7 +287,7 @@ const About = () => {
               </div>
             </div>
             
-            <div className="group flex flex-col p-6 sm:p-8 bg-card/50 backdrop-blur-sm rounded-2xl border border-primary/10 shadow-lg hover:shadow-primary/5 hover:border-primary/20 transition-all duration-300 animate-slide-up" style={{ animationDelay: "0.1s" }}>
+            <div className="group flex flex-col p-6 sm:p-8 bg-card/50 backdrop-blur-sm rounded-2xl border border-primary/10 shadow-lg hover:shadow-primary/5 hover:border-primary/20 transition-all duration-300 animate-slide-up">
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
                 <Calendar className="w-6 h-6 text-primary" />
               </div>
@@ -282,7 +313,7 @@ const About = () => {
               </div>
             </div>
             
-            <div className="group flex flex-col p-6 sm:p-8 bg-card/50 backdrop-blur-sm rounded-2xl border border-primary/10 shadow-lg hover:shadow-primary/5 hover:border-primary/20 transition-all duration-300 animate-slide-up" style={{ animationDelay: "0.2s" }}>
+            <div className="group flex flex-col p-6 sm:p-8 bg-card/50 backdrop-blur-sm rounded-2xl border border-primary/10 shadow-lg hover:shadow-primary/5 hover:border-primary/20 transition-all duration-300 animate-slide-up">
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
                 <Briefcase className="w-6 h-6 text-primary" />
               </div>
@@ -335,7 +366,6 @@ const About = () => {
               <div
                 key={value.title}
                 className="group bg-card/50 backdrop-blur-sm rounded-2xl border border-primary/10 p-8 text-center space-y-4 animate-slide-up hover:border-primary/20 transition-all duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
                   <value.icon className="w-8 h-8 text-primary" />

@@ -24,10 +24,10 @@ const Footer = () => {
         <div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-500/20 rounded-full filter blur-3xl"></div>
       </div>
       
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-14">
-          {/* ✅ Updated Brand with logo.jpeg */}
-          <div className="space-y-4 sm:space-y-5 col-span-2 md:col-span-1">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
+          {/* Brand and Social */}
+          <div className="space-y-4 sm:space-y-5 col-span-1 sm:col-span-2 lg:col-span-1">
             <motion.img 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -37,7 +37,7 @@ const Footer = () => {
               className="h-12 sm:h-14 md:h-16 mb-2 sm:mb-3 rounded-lg"
             />
             <p className="text-xs sm:text-sm text-muted-foreground/90 leading-relaxed">
-              INVENTER Vision Studio — a creative technology studio bridging software development and visual storytelling.
+              INVENTER Design Studio A creative technology studio bridging software development and visual storytelling.
               We build digital products and create cinematic content.
             </p>
             <div className="flex space-x-3 sm:space-x-4 pt-2 sm:pt-3">
@@ -101,6 +101,30 @@ const Footer = () => {
                 <Link to="/services" className="hover:text-primary transition-colors flex items-center gap-2 group">
                   <span className="w-0 group-hover:w-2 h-0.5 bg-primary transition-all duration-300"></span>
                   Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" className="hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-0 group-hover:w-2 h-0.5 bg-primary transition-all duration-300"></span>
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy-policy" className="hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-0 group-hover:w-2 h-0.5 bg-primary transition-all duration-300"></span>
+                  Privacy
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms-of-service" className="hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-0 group-hover:w-2 h-0.5 bg-primary transition-all duration-300"></span>
+                  Terms
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-primary transition-colors flex items-center gap-2 group">
+                  <span className="w-0 group-hover:w-2 h-0.5 bg-primary transition-all duration-300"></span>
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -174,19 +198,19 @@ const Footer = () => {
         </div>
 
         {/* Newsletter */}
-        <div className="mt-10 sm:mt-12 md:mt-16 p-6 sm:p-8 rounded-2xl bg-card/30 backdrop-blur-sm border border-border/50">
-          <div className="grid md:grid-cols-2 gap-6 items-center">
+        <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16 p-4 sm:p-6 md:p-8 rounded-2xl bg-card/30 backdrop-blur-sm border border-border/50">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 items-center">
             <div>
               <h4 className="text-base sm:text-lg font-semibold mb-2">Stay Updated</h4>
               <p className="text-xs sm:text-sm text-muted-foreground">Subscribe to our newsletter for the latest updates and insights.</p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               <input 
                 type="email" 
                 placeholder="Enter your email" 
                 className="flex-1 h-10 px-3 py-2 text-sm rounded-lg bg-background border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
               />
-              <button className="h-10 px-4 py-2 text-sm font-medium rounded-lg bg-primary/90 hover:bg-primary text-white transition-colors">
+              <button className="h-10 px-4 py-2 text-sm font-medium rounded-lg bg-primary/90 hover:bg-primary text-white transition-colors whitespace-nowrap">
                 Subscribe
               </button>
             </div>
@@ -194,23 +218,25 @@ const Footer = () => {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-border mt-10 sm:mt-12 md:mt-16 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-xs sm:text-sm text-muted-foreground flex items-center gap-1">
-            © {new Date().getFullYear()} INVENTER Vision Studio. All rights reserved.
-            <span className="hidden sm:inline-flex items-center text-xs text-muted-foreground/70 ml-2">
-              Made with <Heart size={12} className="mx-1 text-red-500" /> in Lahore
-            </span>
-          </p>
-          <div className="flex space-x-6 sm:space-x-8 mt-4 sm:mt-0">
-            <a href="#" className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
-              Terms of Service
-            </a>
-            <a href="#" className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
-              Sitemap
-            </a>
+        <div className="border-t border-border mt-8 sm:mt-10 md:mt-12 lg:mt-16 pt-6 sm:pt-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center">
+            <p className="text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
+              © {new Date().getFullYear()} INVENTER Vision Studio. All rights reserved.
+              <span className="hidden sm:inline-flex items-center text-xs text-muted-foreground/70 ml-2">
+                Made with <Heart size={12} className="mx-1 text-red-500" /> in Lahore
+              </span>
+            </p>
+            <div className="flex items-center justify-center sm:justify-end space-x-4 sm:space-x-6 md:space-x-8">
+              <Link to="/privacy-policy" className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
+                Privacy Policy
+              </Link>
+              <Link to="/terms-of-service" className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
+                Terms of Service
+              </Link>
+              <a href="#" className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
+                Sitemap
+              </a>
+            </div>
           </div>
         </div>
       </div>
