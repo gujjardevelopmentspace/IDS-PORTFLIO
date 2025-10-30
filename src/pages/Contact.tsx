@@ -270,16 +270,35 @@ const Contact = () => {
       {/* Map Section */}
       <section className="py-16 sm:py-20 px-4 sm:px-6 relative">
         <div className="container mx-auto max-w-6xl">
-          <div className="rounded-2xl overflow-hidden border border-primary/10 shadow-lg h-[400px] relative">
-            <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm">
-              <div className="text-center p-8">
-                <h3 className="text-xl font-bold mb-4">Interactive Map</h3>
-                <p className="text-muted-foreground mb-6">Our office location in the heart of the Creative District</p>
-                <Button variant="outline" className="rounded-full hover:bg-primary/10 transition-all duration-300">
-                  <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
-                    Open in Google Maps <ArrowRight className="ml-2 w-4 h-4" />
-                  </a>
-                </Button>
+          <div className="rounded-2xl overflow-hidden border border-primary/10 shadow-lg relative">
+            <div className="aspect-[16/9] lg:aspect-[21/9] w-full relative">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.0092145433196!2d74.25561227638392!3d31.402662074509806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919019f198f755d%3A0xdc111946570f5e55!2sFirst%20Floor%2C%20Plaza%20No.%208%2C%20H%2C%20A4%2C%20Commercial%20Area%20Block%20H%20Valencia%2C%20Lahore%2C%2054000!5e0!3m2!1sen!2s!4v1698757144809!5m2!1sen!2s"
+                className="absolute inset-0 w-full h-full border-0"
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="INVENTER Design Studio Location"
+              />
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-4 sm:p-6 backdrop-blur-sm">
+              <div className="container mx-auto max-w-6xl">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold">Interactive Map</h3>
+                    <p className="text-sm text-muted-foreground">Our office location in the heart of the Creative District</p>
+                  </div>
+                  <Button variant="outline" className="rounded-full hover:bg-primary/10 transition-all duration-300 w-full sm:w-auto">
+                    <a 
+                      href="https://www.google.com/maps/dir//First+Floor,+Plaza+No.+8,+H,+A4,+Commercial+Area+Block+H+Valencia,+Lahore,+54000/@31.4026357,74.1757766,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3919019f198f755d:0xdc111946570f5e55!2m2!1d74.2581779!2d31.4026621" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="flex items-center justify-center w-full"
+                    >
+                      Get Directions <ArrowRight className="ml-2 w-4 h-4" />
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
