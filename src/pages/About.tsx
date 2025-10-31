@@ -45,18 +45,18 @@ const About = () => {
       <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
         <p>
           Founded in 2018, Inventer Design Studio emerged from a shared vision: to create
-          design solutions that transcend trends and stand the test of time. What began as a
-          small collective of architects and designers has evolved into a full-service design
+          digital products and experiences that transcend trends and stand the test of time. What began as a
+          small collective of engineers and designers has evolved into a full-service digital
           studio.
         </p>
         <p>
-          Our multidisciplinary approach brings together expertise in architecture, interior
-          design, branding, and digital experiences. We believe that great design happens at
-          the intersection of form and function, where creativity meets purpose.
+          Our multidisciplinary approach brings together expertise in software engineering, UX,
+          branding, and digital experiences. We believe that great design happens at the
+          intersection of usefulness and delight, where creativity meets purpose.
         </p>
         <p>
-          Today, we work with clients around the globe, transforming spaces and brands
-          through innovative thinking, meticulous craftsmanship, and a relentless pursuit of
+          Today, we work with clients around the globe, building products and brands
+          through innovative thinking, rigorous engineering, and a relentless pursuit of
           excellence.
         </p>
       </div>

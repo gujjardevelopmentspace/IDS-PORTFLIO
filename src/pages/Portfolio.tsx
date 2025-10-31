@@ -2,7 +2,6 @@ import { useMemo, useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import interiorProject from "@/assets/project-interior-1.jpg";
-import architectureProject from "@/assets/project-architecture-1.jpg";
 import brandingProject from "@/assets/project-branding-1.jpg";
 import digitalProject from "@/assets/project-digital-1.jpg";
 import { ArrowRight, Filter, Tag } from "lucide-react";
@@ -14,23 +13,23 @@ const Portfolio = () => {
   const allProjects = useMemo(() => [
     {
       id: 1,
-      title: "Urban Residence",
-      category: "Interior Design",
-      description: "Luxury apartment transformation with minimalist aesthetics and functional elegance",
+      title: "SaaS Dashboard Design",
+      category: "Product Design",
+      description: "User-focused dashboard design for a SaaS product with emphasis on clarity and efficiency",
       image: interiorProject,
       client: "Private Client",
       year: "2024",
-      tags: ["Residential", "Minimalist", "Luxury"]
+      tags: ["SaaS", "Dashboard", "UX"]
     },
     {
       id: 2,
-      title: "Modern Complex",
-      category: "Architecture",
-      description: "Contemporary commercial building featuring geometric patterns and sustainable design",
-      image: architectureProject,
+      title: "Enterprise Platform",
+      category: "Product Engineering",
+      description: "Scalable enterprise platform built for performance, security, and extensibility",
+  image: digitalProject,
       client: "Urban Development Corp",
       year: "2024",
-      tags: ["Commercial", "Sustainable", "Modern"]
+      tags: ["Backend", "Scalable", "Cloud"]
     },
     {
       id: 3,
@@ -83,9 +82,9 @@ const Portfolio = () => {
         <div className="container relative mx-auto text-center animate-fade-in">
           <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-primary bg-primary/10 rounded-full">OUR WORK</span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-white/80 bg-clip-text">Our Portfolio</h1>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             A curated collection of our most impactful projects, showcasing innovation across
-            architecture, interior design, branding, and digital experiences.
+            software, product engineering, branding, and digital experiences.
           </p>
         </div>
       </section>

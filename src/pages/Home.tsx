@@ -3,9 +3,8 @@ import { ArrowRight, Play, Sparkles, Code2, Video, Zap, TrendingUp, Users2, Gith
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import heroImage from "@/assets/hero-architecture.jpg";
+import heroImage from "@/assets/project-digital-1.jpg";
 import interiorProject from "@/assets/project-interior-1.jpg";
-import architectureProject from "@/assets/project-architecture-1.jpg";
 import brandingProject from "@/assets/project-branding-1.jpg";
 import digitalProject from "@/assets/project-digital-1.jpg";
 import idsLogo from "@/assets/ids-logo.png";
@@ -81,7 +80,7 @@ const Home = () => {
       id: 3,
       title: "Cinematic Brand Film",
       category: "Video Production",
-      image: architectureProject,
+      image: digitalProject,
       tags: ["4K", "Drone", "VFX"]
     },
     {
