@@ -206,15 +206,15 @@ const Home = () => {
           </motion.div>
           {/* Removed logo per branding request */}
 
-          <motion.h1 
+            <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-2 sm:mb-3 md:mb-4 lg:mb-6"
           >
-            <span className="block mb-1 sm:mb-2">Ship Faster.</span>
+            <span className="block mb-1 sm:mb-2">Fast Action.</span>
             <span className="relative inline-block">
-              Scale Smarter.
+              Smart Results.
               <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-1 sm:h-2 bg-gradient-to-r from-lime-400 via-lime-500 to-lime-400 opacity-20 blur-sm animate-pulse" />
             </span>
           </motion.h1>
